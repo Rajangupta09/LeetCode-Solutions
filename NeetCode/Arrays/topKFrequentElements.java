@@ -1,8 +1,5 @@
 package NeetCode.Arrays;
 
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.stream.Collectors;
 import java.util.*;
 
 public class topKFrequentElements {
