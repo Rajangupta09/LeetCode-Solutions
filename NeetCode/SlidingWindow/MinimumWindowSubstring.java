@@ -4,40 +4,45 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class MinimumWindowSubstring {
-    public static String minWindow(String s, String t) {
+    public static String minWindow(String s, String t) {          
         int n1 = s.length();
-        int n2 = t.length();
         Map<Character, Integer> freq = new HashMap();
-        for (char c : s.toCharArray()) {
+        Map<Character, Integer> match = new HashMap<>();
+
+        for (char c : t.toCharArray()) {
             freq.put(c, freq.getOrDefault(c,0) + 1);
         }
-        Map<Character, Integer> match = new HashMap<>();
+        int n2 = freq.size();
+        
         int matches = 0;
         int l = 0;
         int result = Integer.MAX_VALUE;
-        String str = "";
-        for (int r = 0;r<n2;r++) {
-            char c = t.charAt(r);
-            if (matches == 0 && !match.containsKey(c)) {
-                continue;
-            }
-            if (match.containsKey(c)) {
-                match.put(c, match.getOrDefault(c,0)+1);
-                while (match.get(c) > freq.get(c)) {
-                    match.put(t.charAt(l), match.get(t.charAt(l) -1));
-                    l++;
-                }
-                if (match.get(c) == freq.get(c)) matches++;
+        int[] res = new int[]{-1,-1};
+        
+        for (int r = 0;r<n1;r++) {
+            char c = s.charAt(r);
+            match.put(c, match.getOrDefault(c,0) + 1);
+        
+            if (freq.containsKey(c) && freq.get(c) == match.get(c)) {
+                matches++;
             }
 
-            if (matches == n2-1) {
+            while (matches == n2) {
                 if (r-l+1 < result) {
-                    str = t.substring(l, r);
+                    result = r-l+1;
+                    res[0] = l;
+                    res[1] = r;
                 }
+
+                char c1 = s.charAt(l);
+                match.put(c1, match.get(c1) -1);
+                if (freq.containsKey(c1) && match.get(c1) < freq.get(c1)){
+                    matches--;
+                }
+                l++;
             }
-           
-         }
-         return str;
+        }
+        return result != Integer.MAX_VALUE ? s.substring(res[0], res[1]+1) : "";
     
     }
 
