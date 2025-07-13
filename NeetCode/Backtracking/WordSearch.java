@@ -9,26 +9,31 @@ public class WordSearch {
 
         for (int i=0;i<n;i++) {
             for (int j = 0; j<m;j++) {
-                if (board[i][j] == wordch[0]);
+                if (board[i][j] == wordch[0]) {
                     if (dfs(board, wordch, i, j, m, n, directions, 0)) {
                         return true;
                     }
+                }
             }
         }
         return false;
     }
 
     public static boolean dfs(char[][] board, char[] word, int i, int j, int m, int n, int[][] directions, int index) {
-        if (i < 0 && i>=n && j<0&&j>=m && board[i][j] != word[index]) {
+        if (index == word.length) {
+            return true;
+        }
+
+        if (i < 0 || i>=n || j<0 || j>=m || board[i][j] != word[index] || board[i][j] == '#') {
             return false;
         }
-        if (index == word.length) return true;
         boolean result = false;
-        for (int p=index;p< word.length;p++) {
-            for (int[] dir : directions) {
-                result = result || dfs(board, word, i+dir[0], j+dir[1], m, n, directions, index+1);
-            }
+        
+        board[i][j] = '#';
+        for (int[] dir : directions) {
+            result = result || dfs(board, word, i+dir[0], j+dir[1], m, n, directions, index+1);
         }
+        board[i][j] = word[index];
 
         return result;
        
@@ -43,6 +48,6 @@ public class WordSearch {
                                     {'S','A','A','T'},
                                     {'A','C','A','E'}
                                 }  ;
-        System.out.println(exist(board, "BAT")); 
+        System.out.println(exist(board, "CAT")); 
     }
 }
