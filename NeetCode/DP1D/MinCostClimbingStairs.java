@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MinCostClimbingStairs {
 
 
-    public static int MinCostClimbingStairs(int[] cost) {
+    public static int MinCostClimbingStairs0(int[] cost) {
         int n = cost.length;
 
         int[] dp = new int[n+1];
@@ -28,6 +28,6 @@ public class MinCostClimbingStairs {
     }
 
     public static void main(String[] args) {
-        System.out.println(MinCostClimbingStairs(new int[]{1,2,3}));
+        System.out.println(MinCostClimbingStairs0(new int[]{1,2,3}));
     }
 }

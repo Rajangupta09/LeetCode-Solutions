@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class MinimumWindowSubstring {
     public static String minWindow(String s, String t) {          
         int n1 = s.length();
-        Map<Character, Integer> freq = new HashMap();
+        Map<Character, Integer> freq = new HashMap<>();
         Map<Character, Integer> match = new HashMap<>();
 
         for (char c : t.toCharArray()) {

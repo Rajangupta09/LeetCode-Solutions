@@ -1,4 +1,4 @@
-package NeetCode.BinarySearch.Trees;
+package NeetCode.Trees;
 
 public class BalancedBinaryTree {
     public boolean isBalanced(TreeNode root) {

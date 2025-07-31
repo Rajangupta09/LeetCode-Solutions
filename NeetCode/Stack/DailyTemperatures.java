@@ -13,7 +13,7 @@ public class DailyTemperatures {
                 st.pop();
             }
             result[i] = st.isEmpty() ? 0 : st.peek().second - i;
-            st.push(new Pair(tempertures[i], i));
+            st.push(new Pair<>(tempertures[i], i));
             
         }
         

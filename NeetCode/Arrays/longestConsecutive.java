@@ -3,7 +3,7 @@ package NeetCode.Arrays;
 import java.util.*;
 public class longestConsecutive {
     
-    public static int longestConsecutive(int[] nums) {
+    public static int longestConsecutive0(int[] nums) {
         Set<Integer> mp = new HashSet<>();
         int n = nums.length;
         int result = 0;
@@ -26,6 +26,6 @@ public class longestConsecutive {
     }
 
     public static void main(String[] args) {
-        System.out.println(longestConsecutive(new int[]{0,3,2,5,4,6,1,1}));
+        System.out.println(longestConsecutive0(new int[]{0,3,2,5,4,6,1,1}));
     }
 }
